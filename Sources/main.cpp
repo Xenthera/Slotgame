@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Headers/GameSolver.h"
+#include "../Headers/GameSolver.h"
 
 int main() {
     GameSolver* gameSolver = new GameSolver(new SymbolFactory());

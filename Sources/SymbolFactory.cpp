@@ -2,8 +2,8 @@
 // Created by Bobby Lucero on 1/8/23.
 //
 
-#include "Headers/SymbolFactory.h"
-#include "Headers/Math.h"
+#include "../Headers/SymbolFactory.h"
+#include "../Headers/Math.h"
 
 SymbolFactory::SymbolFactory(){
     Symbols.emplace_back(0, 1, 400);

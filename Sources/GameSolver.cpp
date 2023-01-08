@@ -2,9 +2,9 @@
 // Created by Bobby Lucero on 1/8/23.
 //
 
-#include "Headers/GameSolver.h"
-#include "Headers/Math.h"
-#include "Headers/HelperFunctions.h"
+#include "../Headers/GameSolver.h"
+#include "../Headers/Math.h"
+#include "../Headers/HelperFunctions.h"
 
 void GameSolver::printBoard(int *board) {
     for (int i = 0; i < BOARD_WIDTH * BOARD_HEIGHT; ++i) {
@@ -85,7 +85,6 @@ int *GameSolver::Solve(double multiplier) {
         }else{
             tries--;
         }
-
     }
 
     if(tries == 0){
