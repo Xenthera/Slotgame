@@ -6,7 +6,7 @@
 #include "../Headers/Math.h"
 
 SymbolFactory::SymbolFactory(){
-    Symbols.emplace_back(0, 1, 400);
+    Symbols.emplace_back(0, 1, 200);
     Symbols.emplace_back(1, 2, 200);
     Symbols.emplace_back(2, 3, 150);
     Symbols.emplace_back(3, 5, 100);

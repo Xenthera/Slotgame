@@ -93,23 +93,20 @@ int* GameSolver::Solve(double multiplier, int seed) {
                         selectedWinlineIndices.emplace_back(3); //diagonal
                         selectedWinlineIndices.emplace_back(4); //diagonal
                         selectedWinlineIndices.emplace_back(Math::random(0, 2)); //random horizontal
-                    } else { //TODO: random horizontal winlines can't be top or bottom on same board or else diagonal makes an extra winline
-                        /*
-                         * Board value: 12
-                             2, 2,  2,
-                            -1, 2, -1,
-                             2, 2,  2,
-
-                         */
+                    } else {
                         selectedWinlineIndices.emplace_back(Math::random(3, 4)); //random diagonal
-                        int choice;
-                        for (int i = 0; i < 2; ++i) {
-                            int choice;
-                            do {
-                                choice = Math::random(0, 2); //pick a random horizontal
-                            } while (HelperFunctions<int>::Contains(selectedWinlineIndices, choice));
-                            selectedWinlineIndices.emplace_back(choice);
+                        int choice = Math::random(0, 2); //pick a random horizontal
+                        selectedWinlineIndices.emplace_back(choice);
+                        if(choice == 0 || choice == 2){
+                            selectedWinlineIndices.emplace_back(1);
+                        }else{
+                            if(Math::random(0,10) < 5){
+                                selectedWinlineIndices.emplace_back(0);
+                            }else{
+                                selectedWinlineIndices.emplace_back(2);
+                            }
                         }
+
                     }
                     break;
                 case 4: //two diagonal and two random horizontal
@@ -156,7 +153,7 @@ int* GameSolver::Solve(double multiplier, int seed) {
             }
         }
 
-        printBoard(board);
+
 
         //fill in the rest of the symbols
         for (int i = 0; i < BOARD_WIDTH * BOARD_HEIGHT; ++i) {
@@ -190,7 +187,7 @@ int* GameSolver::Solve(double multiplier, int seed) {
 
         if(!boardInvalid){
             solutionFound = true;
-            std::cout << green << "Solution Found For " << std::to_string((int)multiplier) << "x" << normal << std::endl;
+            //std::cout << green << "Solution Found For " << std::to_string((int)multiplier) << "x" << normal << std::endl;
 
         }else{
             tries--;
