@@ -18,8 +18,12 @@ class GameSolver {
 public:
     static const int BOARD_WIDTH = 3;
     static const int BOARD_HEIGHT = 3;
-    static void printBoard(int* board);
     static const int NumTries = 1000;
+
+    //colors
+    static inline const std::string green = "\033[32m";
+    static inline const std::string gold = "\033[93m";
+    static inline const std::string normal = "\033[39m";
 
 public:
 
@@ -28,7 +32,9 @@ public:
 
     GameSolver(SymbolFactory* factory);
     ~GameSolver();
-    int* Solve(double multiplier);
+    int *Solve(double multiplier, int i = -1);
+    void printBoard(int* board);
+
 
 private:
 

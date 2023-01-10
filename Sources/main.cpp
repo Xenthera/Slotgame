@@ -4,9 +4,11 @@
 int main() {
     GameSolver* gameSolver = new GameSolver(new SymbolFactory());
 
-
-    int* board = gameSolver->Solve(100);
-    GameSolver::printBoard(board);
+    //std::cout << "Enter a seed: ";
+    //int seed;
+    //std::cin >> seed;
+    int* board = gameSolver->Solve(9, 9);
+    gameSolver->printBoard(board);
     delete[] board;
     delete gameSolver;
 }

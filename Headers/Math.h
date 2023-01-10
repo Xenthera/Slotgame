@@ -14,7 +14,9 @@ public:
     static void setSeed(int seed){
         srand(seed);
     }
-
+    /*
+     * Max Inclusive
+     */
     static int random(int min, int max) //range : [min, max]
     {
         return min + rand() % (( max + 1 ) - min);

@@ -8,11 +8,12 @@
 SymbolFactory::SymbolFactory(){
     Symbols.emplace_back(0, 1, 400);
     Symbols.emplace_back(1, 2, 200);
-    Symbols.emplace_back(2, 5, 100);
-    Symbols.emplace_back(3, 10, 50);
-    Symbols.emplace_back(4, 20, 25);
-    Symbols.emplace_back(5, 50, 12);
-    Symbols.emplace_back(6, 100, 6);
+    Symbols.emplace_back(2, 3, 150);
+    Symbols.emplace_back(3, 5, 100);
+    Symbols.emplace_back(4, 10, 50);
+    Symbols.emplace_back(5, 20, 25);
+    Symbols.emplace_back(6, 50, 12);
+    Symbols.emplace_back(7, 100, 6);
 }
 
 int SymbolFactory::GetWeightedSymbol() {
