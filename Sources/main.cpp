@@ -1,35 +1,53 @@
 #include <iostream>
 #include "../Headers/GameSolver.h"
+#include "../Headers/WinInfo.h"
+#include "../Headers/HelperFunctions.h"
 #include <chrono>
+#include <unordered_set>
+
+//Possible mults: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 35, 40, 50, 51, 52, 53, 54, 55, 56, 57, 58, 60, 61, 62, 63, 65, 70, 71, 72, 73, 75, 80, 100, 103, 104, 105, 106, 107, 108, 111, 112, 113, 115, 121, 122, 123, 125, 130, 150, 151, 152, 153, 155, 160, 170, 200, 250, 300, 400, 500
 
 int main() {
     auto* gameSolver = new GameSolver(new SymbolFactory());
 
-    std::cout << "Enter number of boards to  generate: ";
-    int count;
-    std::cin >> count;
+    //std::cout << "Enter number of boards to  generate: ";
+    //int count;
+    ///std::cin >> count;
 
-    std::vector<int*> boards;
 
-    auto start = std::chrono::high_resolution_clock::now();
+    int* board = gameSolver->Solve(2);
 
-    for (int i = 0; i < count; ++i) {
-        int* board = gameSolver->Solve(200, i);
-        //boards.push_back(board);
-        if(i == count - 1)
-            gameSolver->printBoard(board);
-        delete[] board;
+    gameSolver->printBoard(board);
+
+    WinInfo info(board, gameSolver->winLines, gameSolver->symbolFactory);
+
+    std::cout << "Winning lines: " << std::endl;
+    for (auto line : info.WinningLines) {
+        std::cout << line << ", ";
     }
+    std::cout << std::endl;
 
-    auto end = std::chrono::high_resolution_clock::now();
 
-    auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-
-    std::cout << "Boards vector size: " + std::to_string(boards.size()) << std::endl;
-
-    double timeEnd = time(nullptr);
-
-    std::cout << "Time taken: " << std::to_string(elapsed_time) << "ms" << std::endl;
+    delete[] board;
 
     delete gameSolver;
+
+
+}
+
+void calculatePossibleMults(GameSolver* gameSolver){
+    std::vector<int> possibleMults;
+    for (int i = 0; i < 1000; ++i) {
+        try {
+            int *board = gameSolver->Solve(i);
+            possibleMults.push_back(i);
+        }catch(...){
+
+        }
+    }
+    std::cout << "Possible Mults: ";
+    for (int mult : possibleMults) {
+        std::cout << mult << ", ";
+    }
+    std::cout << std::endl;
 }

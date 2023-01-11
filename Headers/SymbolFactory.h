@@ -13,8 +13,10 @@
 class SymbolFactory {
 public:
     std::vector<Symbol> Symbols;
+    std::vector<double> MultList; //creating this so we don't have to regenerate it every time we need a list of mults from symbols.
     SymbolFactory();
     int GetWeightedSymbol();
+    int GetSymbolIDFromMult(double multiplier);
 };
 
 

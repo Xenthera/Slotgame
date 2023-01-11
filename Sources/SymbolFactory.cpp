@@ -14,6 +14,10 @@ SymbolFactory::SymbolFactory(){
     Symbols.emplace_back(5, 20, 25);
     Symbols.emplace_back(6, 50, 12);
     Symbols.emplace_back(7, 100, 6);
+
+    for (Symbol s : Symbols) {
+        this->MultList.push_back(s.multiplier);
+    }
 }
 
 int SymbolFactory::GetWeightedSymbol() {
@@ -29,4 +33,13 @@ int SymbolFactory::GetWeightedSymbol() {
     }
 
     return -1;
+}
+
+int SymbolFactory::GetSymbolIDFromMult(double multiplier) {
+    int sym = -1;
+    for (int i = 0; i < Symbols.size(); ++i) {
+        if(Symbols[i].multiplier == multiplier) return Symbols[i].id;
+    }
+
+    return sym;
 }

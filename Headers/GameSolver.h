@@ -21,7 +21,7 @@ public:
     static const int NumTries = 1000;
 
     //colors
-    static inline const std::string green = "\033[32m";
+    static inline const std::string green = "\033[92m";
     static inline const std::string gold = "\033[93m";
     static inline const std::string normal = "\033[39m";
 
@@ -34,6 +34,8 @@ public:
     ~GameSolver();
     int *Solve(double multiplier, int i = -1);
     void printBoard(int* board);
+private:
+    std::vector<int> SolveNonZeroBoard(double multiplier, std::vector<int> & selectedWinlineIndices) const;
 
 
 private:
