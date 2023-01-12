@@ -145,7 +145,7 @@ std::vector<int> GameSolver::SolveNonZeroBoard(double multiplier, std::vector<in
 
     //==================================================================================================================
 
-    if(availableSplitTypes.empty()) throw std::runtime_error("No way to solve for multiplier: " + std::to_string(multiplier));
+    if(availableSplitTypes.empty()) throw std::runtime_error("No way to solve for multiplier: " + std::to_string((int)multiplier));
 
     std::vector<SplitTypes> splitTypesVector{};
 
@@ -155,9 +155,9 @@ std::vector<int> GameSolver::SolveNonZeroBoard(double multiplier, std::vector<in
         splitTypesVector.push_back(*iter);
     }
 
-    SplitTypes choice = splitTypesVector[Math::random(0, splitTypesVector.size() - 1)];
+    SplitTypes splitChoice = splitTypesVector[Math::random(0, splitTypesVector.size() - 1)];
 
-    if (choice == Single) {
+    if (splitChoice == Single) {
 
         int idx = Math::random(0, potentialSymbols.size() - 1);
         int sym = potentialSymbols[idx].first;
@@ -227,7 +227,7 @@ std::vector<int> GameSolver::SolveNonZeroBoard(double multiplier, std::vector<in
                 throw std::runtime_error("Invalid winline count");
         }
     }
-    else if(choice == Multi){
+    else if(splitChoice == Multi){
         for (int i = 0; i < rndSplit.size(); ++i) {
 
             int choice;
