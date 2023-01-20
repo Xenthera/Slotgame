@@ -33,7 +33,7 @@ public:
     GameSolver(SymbolFactory* factory);
     ~GameSolver();
     int *Solve(double multiplier, int i = -1);
-    void printBoard(int* board);
+    void printBoard(int *board, bool noColor = false);
 private:
     std::vector<int> SolveNonZeroBoard(double multiplier, std::vector<int> & selectedWinlineIndices) const;
 

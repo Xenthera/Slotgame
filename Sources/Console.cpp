@@ -3,6 +3,7 @@
 //
 
 #include "../Headers/Console.h"
+#include "../Headers/Game.h"
 
 std::vector<std::string> Console::tokenizeString(std::string str, char delimiter) {
     std::vector<std::string> returnVector;
@@ -21,6 +22,8 @@ void Console::RunCommand(Game* pge, const std::string& command) {
 
     if(command == "exit"){
         exit(0);
+    }else if(command == "board"){
+        pge->SolveBoard();
     }
 
     auto t = std::time(nullptr);

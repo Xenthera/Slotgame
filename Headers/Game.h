@@ -5,18 +5,19 @@
 #define CPPSANDBOX_GAME_H
 #include "Console.h"
 #include "GameEngine/olcPixelGameEngine.h"
+#include "GameSolver.h"
 
 class Game : public olc::PixelGameEngine {
 public:
-    Console console;
+    Console* console;
+    GameSolver* gameSolver;
 
-    Game(){
-        console = Console();
-    }
-
+    Game();
+    ~Game();
     bool OnUserCreate() override;
     bool OnUserUpdate(float fElapsedTime) override;
     void OnTextEntryComplete(const std::string& text) override;
     bool OnConsoleCommand(const std::string& text) override;
+    void SolveBoard();
 };
 #endif //CPPSANDBOX_GAME_H

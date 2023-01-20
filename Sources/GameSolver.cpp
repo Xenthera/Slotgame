@@ -9,7 +9,11 @@
 #include "../Headers/HelperFunctions.h"
 #include "../Headers/WinInfo.h"
 
-void GameSolver::printBoard(int *board) {
+void GameSolver::printBoard(int *board, bool noColor) {
+
+    std::string tempGold = noColor ? "" : gold;
+    std::string tempNormal = noColor ? "" : normal;
+    std::string tempGreen = noColor ? "" : green;
 
     WinInfo winInfo(board, this->winLines, this->symbolFactory);
 
@@ -22,13 +26,13 @@ void GameSolver::printBoard(int *board) {
             }
         }
 
-        std::cout << (onWinLine ? gold : normal) << board[i] << normal << ", ";
+        std::cout << (onWinLine ? tempGold : tempNormal) << board[i] << tempNormal << ", ";
         if((i + 1) % BOARD_WIDTH == 0){
             std::cout << "\n";
         }
     }
 
-    std::cout << std::endl << green << "Board value: " << gold << winInfo.BoardValue << normal << std::endl;
+    std::cout << std::endl << tempGreen << "Board value: " << tempGold << winInfo.BoardValue << tempNormal << std::endl;
 }
 
 GameSolver::GameSolver(SymbolFactory *factory) {

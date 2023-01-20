@@ -21,7 +21,7 @@ int main() {
 
     int* board = gameSolver->Solve(2);
 
-    gameSolver->printBoard(board);
+    gameSolver->printBoard(board, true);
 
     WinInfo info(board, gameSolver->winLines, gameSolver->symbolFactory);
 
